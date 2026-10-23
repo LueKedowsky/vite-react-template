@@ -1,20 +1,11 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/// <reference types="vitest" />
-/// <reference types="vite/client" />
-/// <reference types="vite-plugin-svgr/client" />
-
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
-import svgr from 'vite-plugin-svgr'
 
-// https://vitejs.dev/config/
+// https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    svgr({
-      include: '**/*.svg?react',
-    }),
-  ],
+  plugins: [react()],
+  
+  // Алиасы для импорта (как в оригинале)
   resolve: {
     alias: {
       app: '/src/app',
@@ -32,9 +23,19 @@ export default defineConfig({
       widgets: '/src/widgets',
     },
   },
+  
+  // Тестовая конфигурация Vitest
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['./src/setupTests.ts'],
+    setupFiles: ['./src/tests/setupTests.ts'],
+  },
+  
+  // Поддержка CSS Modules для .module.scss файлов
+  css: {
+    modules: {
+      generateScopedName: 'local-[name]__[local]',
+      localsConvention: 'camelCase',
+    },
   },
 })

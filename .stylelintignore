@@ -1,3 +1,4 @@
-dist
-node_modules
-.eslintrc.cjs
+# Ignore TypeScript files for stylelint
+**/*.ts
+**/*.tsx
+**/*.cjs

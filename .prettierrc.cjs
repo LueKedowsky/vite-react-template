@@ -6,6 +6,4 @@ module.exports = {
   trailingComma: 'all',
   endOfLine: 'auto',
   arrowParens: 'always',
-  importOrderSeparation: true,
-  importOrderSortSpecifiers: true,
 }
